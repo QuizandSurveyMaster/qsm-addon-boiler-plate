@@ -1,2 +1,2 @@
-# QMN-addon-boiler-plate
-Quiz Master Next Addons Boiler Plate
+# Quiz Master Next Addons Boiler Plate
+A boiler plate for developers who are making addons for Quiz Master Next
