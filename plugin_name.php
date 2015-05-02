@@ -47,8 +47,7 @@ class Plugin_Name
   	  */
     public function load_dependencies()
     {
-      include("php/gradebook-main-page.php");
-      include("php/gradebook-user-page.php");
+      //Load in php files here
     }
 
     /**
