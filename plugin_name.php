@@ -71,8 +71,8 @@ class Plugin_Name {
       * @todo If you are not setting up the addon settings tab, the quiz settings tab, or variables, simply remove the relevant add_action below
   	  */
     public function add_hooks() {
-      add_action( 'plugins_loaded', 'qsm_addon_xxxxx_register_quiz_settings_tabs' );
-      add_action( 'plugins_loaded', 'qsm_addon_xxxxx_register_addon_settings_tabs' );
+      add_action( 'admin_init', 'qsm_addon_xxxxx_register_quiz_settings_tabs' );
+      add_action( 'admin_init', 'qsm_addon_xxxxx_register_addon_settings_tabs' );
       add_filter( 'mlw_qmn_template_variable_results_page', 'qsm_addon_xxxxxx_my_variable', 10, 2 );
     }
 }
