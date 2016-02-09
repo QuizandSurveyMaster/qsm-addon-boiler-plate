@@ -14,6 +14,7 @@
  /**
   * @todo Follow this list to setup your addon:
   *
+  * - Fill in information in the comments at the top of this file
   * - Replace the Plugin_Name class throughout the addon with your addon's main class
   * - Change the xxxxx in the various settings functions to your addon's name
   * - Replace all instances of the plugin name with your addon's name including the folder and the main file
