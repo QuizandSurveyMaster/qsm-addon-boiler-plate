@@ -76,5 +76,30 @@ class Plugin_Name {
       add_filter( 'mlw_qmn_template_variable_results_page', 'qsm_addon_xxxxxx_my_variable', 10, 2 );
     }
 }
-$plugin_name = new Plugin_Name();
+
+/**
+ * Loads the addon if QSM is installed and activated
+ *
+ * @since 0.1.0
+ * @return void
+ */
+function qsm_addon_xxxxxx_load() {
+	// Make sure QSM is active
+	if ( class_exists( 'MLWQuizMasterNext' ) ) {
+		$plugin_name = new Plugin_Name();
+	} else {
+		add_action( 'admin_notices', 'qsm_addon_xxxxxx_missing_qsm' );
+	}
+}
+add_action( 'plugins_loaded', 'qsm_addon_xxxxxx_load' );
+
+/**
+ * Display notice if Quiz And Survey Master isn't installed
+ *
+ * @since       0.1.0
+ * @return      string The notice to display
+ */
+function qsm_addon_xxxxxx_missing_qsm() {
+  echo '<div class="error"><p>Plugin Name requires Quiz And Survey Master. Please install and activate the Quiz And Survey Master plugin.</p></div>';
+}
 ?>
