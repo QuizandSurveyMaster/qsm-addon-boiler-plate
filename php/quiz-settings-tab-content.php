@@ -23,8 +23,9 @@ function qsm_addon_xxxxx_register_quiz_settings_tabs() {
  */
 function qsm_addon_xxxxx_quiz_settings_tabs_content() {
 
-  //Enqueue your scripts
-  wp_enqueue_script( 'plugin-name-admin', plugins_url( '../js/plugin-name-admin.js' , __FILE__ ), array( 'jquery' ) );
+  //Enqueue your scripts and styles
+  wp_enqueue_script( 'plugin_name_admin_script', plugins_url( '../js/plugin-name-admin.js' , __FILE__ ), array( 'jquery' ) );
+  wp_enqueue_style( 'plugin_name_admin_style', plugins_url( '../css/plugin-name-admin.css' , __FILE__ ), array( 'jquery' ) );
 
   // Display your quiz settings here!
 }
