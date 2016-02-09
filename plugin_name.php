@@ -11,6 +11,15 @@
  * @version 0.1.0
  */
 
+ /**
+  * @todo Follow this list to setup your addon:
+  *
+  * - Replace the Plugin_Name class throughout the addon with your addon's main class
+  * - Change the xxxxx in the various settings functions to your addon's name
+  * - Replace all instances of the plugin name with your addon's name including the folder and the main file
+  * - Find all @todo's and fill in the relevant information
+  */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
@@ -21,8 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
   *
   * @since 0.1.0
   */
-class Plugin_Name
-{
+class Plugin_Name {
+
     /**
   	  * Main Construct Function
   	  *
@@ -33,8 +42,7 @@ class Plugin_Name
   	  * @uses Plugin_Name::add_hooks() Adds actions to hooks and filters
   	  * @return void
   	  */
-    function __construct()
-    {
+    function __construct() {
       $this->load_dependencies();
       $this->add_hooks();
     }
@@ -44,10 +52,12 @@ class Plugin_Name
   	  *
   	  * @since 0.1.0
   	  * @return void
+      * @todo If you are not setting up the addon settings tab, the quiz settings tab, or variables, simply remove the include file below
   	  */
-    public function load_dependencies()
-    {
-      //Load in php files here
+    public function load_dependencies() {
+      include( "php/addon-settings-tab-content.php" );
+      include( "php/quiz-settings-tab-content.php" );
+      include( "php/variables.php" );
     }
 
     /**
@@ -57,48 +67,12 @@ class Plugin_Name
   	  *
   	  * @since 0.1.0
   	  * @return void
+      * @todo If you are not setting up the addon settings tab, the quiz settings tab, or variables, simply remove the relevant add_action below
   	  */
-    public function add_hooks()
-    {
-      add_action('plugins_loaded', array($this,'setup_settings_pages'));
-    }
-
-    /**
-     * Sets up settings pages
-     *
-     * Adds tabs to Addons Settings and Quiz Settings
-     *
-     * @since 0.1.0
-     * @return void
-     */
-    public function setup_settings_pages()
-    {
-      global $mlwQuizMasterNext;
-      if (!is_null($mlwQuizMasterNext) && !is_null($mlwQuizMasterNext->pluginHelper) && method_exists($mlwQuizMasterNext->pluginHelper, 'register_quiz_settings_tabs'))
-      {
-        $mlwQuizMasterNext->pluginHelper->register_quiz_settings_tabs("Plugin Name", array($this, 'generate_plugin_quiz_settings'));
-        $mlwQuizMasterNext->pluginHelper->register_addon_settings_tab("Plugin Name", array($this, 'generate_plugin_settings'));
-      }
-    }
-
-    /**
-     * Displays contents of Quiz Settings tab
-     *
-     * @since 0.1.0
-     * @return void
-     */
-    public function generate_plugin_quiz_settings() {
-      //Display contents for your Quiz Settings tab here
-    }
-
-    /**
-     * Displays contents of Addon Settings tab
-     *
-     * @since 0.1.0
-     * @return void
-     */
-    public function generate_plugin_settings() {
-      //Display contents for your Addon Settings tab here
+    public function add_hooks() {
+      add_action( 'plugins_loaded', 'qsm_addon_xxxxx_register_quiz_settings_tabs' );
+      add_action( 'plugins_loaded', 'qsm_addon_xxxxx_register_addon_settings_tabs' );
+      add_filter( 'mlw_qmn_template_variable_results_page', 'qsm_addon_xxxxxx_my_variable', 10, 2 );
     }
 }
 $plugin_name = new Plugin_Name();
