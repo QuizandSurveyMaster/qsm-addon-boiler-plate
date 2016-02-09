@@ -22,6 +22,10 @@ function qsm_addon_xxxxx_register_addon_settings_tabs() {
  * @todo Replace the xxxxx with your addon's name
  */
 function qsm_addon_xxxxx_addon_settings_tabs_content() {
+
+  //Enqueue your scripts
+  wp_enqueue_script( 'plugin-name-admin', plugins_url( '../js/plugin-name-admin.js' , __FILE__ ), array( 'jquery' ) );
+  
   // Display your addon settings here!
 }
 ?>
