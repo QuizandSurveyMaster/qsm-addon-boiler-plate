@@ -34,6 +34,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Plugin_Name {
 
     /**
+  	 * Version Number
+  	 *
+  	 * @var string
+  	 * @since 0.1.0
+  	 */
+  	public $version = '0.1.0';
+
+    /**
   	  * Main Construct Function
   	  *
   	  * Call functions within class
