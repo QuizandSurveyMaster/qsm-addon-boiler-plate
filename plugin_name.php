@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:
+ * Plugin Name: QSM - 
  * Plugin URI:
  * Description:
  * Author:
