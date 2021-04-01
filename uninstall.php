@@ -9,4 +9,3 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Delete any options you have created with the addon.
-?>
