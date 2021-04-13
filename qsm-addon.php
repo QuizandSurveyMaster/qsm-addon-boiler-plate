@@ -58,8 +58,21 @@ class QSM_Customization_XXXX {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->load_dependencies();
-		$this->add_hooks();
+		if (class_exists('MLWQuizMasterNext')) {
+			$this->load_dependencies();
+			$this->add_hooks();
+		} else {
+			add_action('admin_notices', array(&$this, 'admin_notices'));
+		}
+	}
+
+	/**
+	 * Display notice if Quiz And Survey Master isn't installed
+	 *
+	 * @since 1.0.0
+	 */
+	function admin_notices() {
+		echo '<div class="error"><p>Custom Addon requires Quiz And Survey Master. Please install and activate the Quiz And Survey Master plugin.</p></div>';
 	}
 
 	/**
@@ -86,25 +99,8 @@ class QSM_Customization_XXXX {
 }
 
 /**
- * Loads the addon if QSM is installed and activated
+ * Loads the addon
  *
  * @since 1.0.0
  */
-function qsm_addon_customization_XXXX_load() {
-	if (class_exists('MLWQuizMasterNext')) {
-		$qsm_customization_XXXX = new QSM_Customization_XXXX();
-	} else {
-		add_action('admin_notices', 'qsm_addon_customization_XXXX_missing_qsm');
-	}
-}
-
-add_action('plugins_loaded', 'qsm_addon_customization_XXXX_load');
-
-/**
- * Display notice if Quiz And Survey Master isn't installed
- *
- * @since 1.0.0
- */
-function qsm_addon_customization_XXXX_missing_qsm() {
-	echo '<div class="error"><p>Custom Addon requires Quiz And Survey Master. Please install and activate the Quiz And Survey Master plugin.</p></div>';
-}
+$qsm_customization_XXXX = new QSM_Customization_XXXX();
