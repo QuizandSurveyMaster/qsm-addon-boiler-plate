@@ -11,8 +11,20 @@ if (!class_exists('AddonFunctions_XXXX')) {
 			/**
 			 * Add Hooks & Functions.
 			 */
+			//add_action('admin_enqueue_scripts', array(&$this, 'admin_enqueue_scripts'), 9999);
+			//add_action('wp_enqueue_scripts', array(&$this, 'wp_enqueue_scripts'), 9999);
 			//add_action('admin_init', 'qsm_addon_XXXX_register_settings_tabs');
 			//add_action('admin_init', 'qsm_addon_XXXX_register_quiz_settings_tabs');
+		}
+
+		public function admin_enqueue_scripts() {
+			wp_enqueue_script('qsm-custom-addon-admin-js', QSM_XXXX_ADDON_JS_URL . '/qsm-custom-addon-admin.js', array('jquery'), QSM_XXXX_ADDON_VERSION, true);
+			wp_enqueue_style('qsm-custom-addon-admin-css', QSM_XXXX_ADDON_CSS_URL . '/qsm-custom-addon-admin.css');
+		}
+
+		public function wp_enqueue_scripts() {
+			wp_enqueue_script('qsm-custom-addon-front-js', QSM_XXXX_ADDON_JS_URL . '/qsm-custom-addon-front.js', array('jquery'), QSM_XXXX_ADDON_VERSION, true);
+			wp_enqueue_style('qsm-custom-addon-front-css', QSM_XXXX_ADDON_CSS_URL . '/qsm-custom-addon-front.css');
 		}
 
 		function qsm_get_quiz_url($quiz_id = 0) {
@@ -39,35 +51,6 @@ if (!class_exists('AddonFunctions_XXXX')) {
 				}
 			}
 			return $permalink;
-		}
-
-		/**
-		 * Get a specific property of an array without needing to check if that property exists.
-		 *
-		 * Provide a default value if you want to return a specific value if the property is not set.
-		 *
-		 * @since  Unknown
-		 * @access public
-		 *
-		 * @param array  $array   Array from which the property's value should be retrieved.
-		 * @param string $prop    Name of the property to be retrieved.
-		 * @param string $default Optional. Value that should be returned if the property is not set or empty. Defaults to null.
-		 *
-		 * @return null|string|mixed The value
-		 */
-		function rgar($array, $prop, $default = null) {
-
-			if (!is_array($array) && !( is_object($array) && $array instanceof ArrayAccess )) {
-				return $default;
-			}
-
-			if (isset($array[$prop])) {
-				$value = $array[$prop];
-			} else {
-				$value = '';
-			}
-
-			return empty($value) && $default !== null ? $default : $value;
 		}
 
 	}
